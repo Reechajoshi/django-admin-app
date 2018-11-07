@@ -1,0 +1,134 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Macgregor Gateway</title>
+        
+        
+        
+        <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+        
+        <script type="text/javascript" src="/static/js/jquery-ui.js"></script>
+        
+        <script type="text/javascript" src="/static/js/helper.js"></script>  
+
+        <script type="text/javascript" src="/js/?request=base"></script>  
+        <script type="text/javascript" src="/js/?request=network"></script>
+
+        <link rel="stylesheet" href="/static/css/jquery-ui.css">
+        <link rel="stylesheet" href="/static/css/main.css" />
+        
+        <style>
+            #tabs {
+                padding: 0px;
+                background: none;
+                border-width: 0px;
+            }
+            #tabs .ui-tabs-nav {
+                padding-left: 0px;
+                background: transparent;
+                border-width: 0px 0px 1px 0px;
+                -moz-border-radius: 0px;
+                -webkit-border-radius: 0px;
+                border-radius: 0px;
+            }
+            #tabs .ui-tabs-panel {
+                <!-- background: #FAFAFA; -->
+                background: #FFFFFF;
+                border-width: 0px 1px 1px 1px;
+            }
+            
+            #tabs .ui-tabs-nav li.ui-tabs-active {
+                <!-- background: #FAFAFA; -->
+                background: #FFFFFF;
+            }
+			
+			.ui-dialog-titlebar-close {
+			  visibility: hidden;
+			}
+        </style>
+        
+    </head>
+    
+    <body style="margin:0;padding:0;">
+        <div id="dialog-message" title="" style="display:none;"><p><span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span></p></div>
+        <div id="header">
+            <div id="header_logo">
+                Macgregor Gateway
+            </div>
+            <div class="header_menu_block_logout" title="Logout" style="float:right;">
+                <a href="/logout/">
+                    <img class="header_menu_block_img" src='{% static "images/logout.png" %}'>
+                </a>
+            </div>
+            <div class="clear"></div>
+            
+            <div id="loading_div">Loading...</div>
+            
+        </div>
+        
+        <div style="width:100%; padding-bottom:10px;" id="main_content">
+            <div style="width: 20%;display: inline-block;height: 100%;border-right:1px solid #b9b9b9;">
+                <table style="text-align: center;width: 100%;font-size: 20px;">
+                <tr >
+                    <td height="40">
+                        <a style="text-decoration: none;color: black;" onclick="get_status_Html();" >
+                            <!-- <img class="header_menu_block_img" src='{% static "images/Status-Button_1.png" %}'> href="/status/" -->
+                            {% if request.path == '/status/' %}
+                                <img class="header_menu_block_img" src='{% static "images/Status-Button_2.png" %}' />
+                            {% else %}
+                                <img class="header_menu_block_img" src='{% static "images/Status-Button_1.png" %}' />
+                            {% endif %}
+                        </a>
+                    </td>	
+                </tr>
+                <tr>
+                <td height="40">
+                    <a style="text-decoration: none;color: black;" onclick="get_Network_Html();" >
+                        <!-- <img class="header_menu_block_img" src='{% static "images/Network-Button_1.png" %}'> -->
+                        {% if request.path == '/network/' %}
+                            <img class="header_menu_block_img" src='{% static "images/Network-Button_2.png" %}' />
+                        {% else %}
+                            <img class="header_menu_block_img" src='{% static "images/Network-Button_1.png" %}' />
+                        {% endif %}
+                    </a></td>
+                </tr>
+                <tr>
+                    <td height="40">
+                        <a style="text-decoration: none;color: black;" href="#">
+                            <img class="header_menu_block_img" src='{% static "images/Web-Button_1.png" %}'> 
+                            <!-- {% if request.path == '/#/' %}
+                                <img class="header_menu_block_img" src='{% static "images/Web-Button_2.png" %}' />
+                            {% else %}
+                                <img class="header_menu_block_img" src='{% static "images/Web-Button_1.png" %}' />
+                            {% endif %} -->
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td height="40">
+                        <a style="text-decoration: none;color: black;" href="#">
+                            <img class="header_menu_block_img" src='{% static "images/Admin-Button_1.png" %}'> 
+                            <!-- {% if request.path == '/#/' %}
+                                <img class="header_menu_block_img" src='{% static "images/Admin-Button_1.png" %}' />
+                            {% else %}
+                                <img class="header_menu_block_img" src='{% static "images/Admin-Button_2.png" %}' />
+                            {% endif %} -->
+                        </a>
+                    </td>
+                </tr>
+            </table> 
+            </div><!--
+            
+            --><div style="width: 80%;display: inline-block;height: 100%;border-right:solid #000;vertical-align:top; padding-left:20px">
+                
+                <div id="details_container">
+                 <!-- Values will be filled through javascript -->   
+                        {% block content %}  
+                        {% endblock %}
+                </div>
+                
+            </div>
+            
+        </div>
+    </body>
+</html>

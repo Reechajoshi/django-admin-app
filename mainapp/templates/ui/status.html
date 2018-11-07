@@ -1,0 +1,21 @@
+<!-- extending static header bar -->
+{% extends 'ui/base.html' %}
+{% block content %}
+    {% load staticfiles %}
+     <script type="text/javascript" src="/js/?request=network"></script>
+    <!-- <div id="tabs" >
+        <ul> <!-- if the details container height is greater than window height, then set it with this method 
+            <li>
+                <a href="#tabs-1">Status</a>
+            </li>            
+        </ul>
+        
+        <div id="tabs-1" class="tab_container" style="min-height:100px;">
+           <div id="CPU_usage" name="CPU_usage" >
+            <div id="cpu_details_heading">
+                <div id="cpu_usage" >CPU Usage</div>
+            </div>
+            </div>
+        </div>        
+    </div> -->
+{% endblock %}

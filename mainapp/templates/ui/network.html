@@ -1,0 +1,138 @@
+<!-- extending static header bar -->
+{% extends 'ui/base.html' %}
+{% block content %}
+    {% load staticfiles %}
+     <!-- <div id="tabs" >
+        <ul> 
+            <li>
+                <a href="#tabs-1">Interfaces</a>
+            </li>
+            <li>
+                <a href="#tabs-2">User</a>
+            </li>
+            
+        </ul>
+        
+        <div id="tabs-1" class="tab_container" style="min-height:300px; padding-right:10px;" >
+            <div>
+                <div id="interfaceContainer">
+                    <div id="internetDetails" style="border:1px solid #b9b9b9; margin-bottom:10px;width:350px; cursor:pointer;" onclick="activateInterface('internet');" >
+                        <div style="border-bottom:1px solid #b9b9b9;padding:10px;">
+                            <div style="display:inline-block;">
+                                <img class="header_menu_block_img" src='{% static "images/Network-Button_2.png" %}' > 
+                            </div>
+                            <div id="internetlabel" style="display: inline-block;vertical-align: top;padding-top: 10px;">
+                                Internet
+                            </div>
+                        </div>
+                        <div style="display:inline-block;padding:10px;">
+                             Connection to the world.
+                        </div>                       
+                    </div>
+                    <div id="lanDetails" style="border:1px solid #b9b9b9; margin-bottom:10px;width:350px" onclick="activateInterface('lan');">
+                       <div style="border-bottom:1px solid #b9b9b9;padding:10px;">
+                            <div style="display:inline-block;">
+                                <img class="header_menu_block_img" src='{% static "images/Network-Button_2.png" %}' > 
+                            </div>
+                            <div id="lanlabel" style="display: inline-block;vertical-align: top;padding-top: 10px;">
+                                Lan
+                            </div>
+                        </div>
+                        <div style="display:inline-block;padding:10px;">
+                             Connection to the world.
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div id="general_container" style="display:none;">
+                <div id="general_details">
+                    <!-- <div id="profile_field_title" class="profile_field_title" style="padding-bottom:10px;">
+                        Lan Details
+                    </div> 
+                    <div id="general_ques_block">                        
+                        <div id="profile_field_title" class="profile_field_title" style="padding-bottom:10px;">
+                            Lan IFC:
+                        </div>
+                        <div class="profile_field_element" id="profile_field_element"><label name="edit_lan_ifc" id="edit_lan_ifc" type="text" >LAN IFC</label></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="general_ques_block">
+                        <div class="profile_field_title" id="profile_field_title" style="padding:10px;">
+                           IP Address:
+                        </div>
+                        <div class="profile_field_element" id="profile_field_element"><input name="edit_lan_address" maxlength="20" id="edit_lan_address" type="text" ></div>
+                        
+                    </div>
+                    <div class="clear"></div>
+                    <div id="general_ques_block">
+                        <div class="profile_field_title" id="profile_field_title">
+                           IP Mask:
+                        </div> 
+                        <div class="profile_field_element" id="profile_field_element"><input name="edit_lan_mask" id="edit_lan_mask" maxlength="20" type="text"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div id="general_ques_block">
+                        <div class="profile_field_title" id="profile_field_title">
+                            Broadcast:
+                        </div> 
+                        <div class="profile_field_element" id="profile_field_element"><input name="edit_lan_broadcast" id="edit_lan_broadcast" maxlength="20" type="text"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="internet_container" style="display:none;">
+                <div id="general_details">
+					 <div id="radio">
+						<input type="radio" name="dynamicradio" id="dynamicradio" value="dynamicDHCP"  onchange="handleChange(this);" checked><label style="font-size: 14px;color: #737373;" for="dynamicradio">Dynamic DHCP</label><br><br>
+						<input type="radio" name="dynamicradio" id="staticradio" value="static" onchange="handleChange(this);"><label for="staticradio" style="font-size: 14px;color: #737373;">Static</label>
+                     </div>
+					<div id="internet_details_block">
+						<div id="general_ques_block" >
+						   
+							<div id="profile_field_title" class="profile_field_title">
+								 <label>Internet IFC:</label>
+							</div>
+							<div class="profile_field_element" id="profile_field_element">
+								<label name="edit_internet_ifc" id="edit_internet_ifc" type="text">Internet IFC</label>
+						   </div>
+						</div>
+						<div class="clear"></div>                  
+											   
+						<div id="general_ques_block">
+							<div class="profile_field_title" id="profile_field_title" style="padding:10px;">
+								IP Address:
+							</div>
+							<div class="profile_field_element" id="profile_field_element"><input name="edit_internet_address" id="edit_internet_address"  maxlength="20" type="text" ></div>       
+						</div>
+						<div class="clear"></div>
+						<div id="general_ques_block">
+							<div class="profile_field_title" id="profile_field_title" style="padding:10px;">IP Mask:</div> 
+							<div class="profile_field_element" id="profile_field_element"><input name="edit_internet_mask" maxlength="20" id="edit_internet_mask" type="text"></div>
+						</div>
+						<div class="clear"></div>
+						<div id="general_ques_block">
+							<div class="profile_field_title" id="profile_field_title">
+								Broadcast:
+							</div> 
+							<div class="profile_field_element" id="profile_field_element"><input name="edit_internet_broadcast" id="edit_internet_broadcast" maxlength="20" type="text"></div>
+						</div> 
+					</div>
+                    
+                </div>
+            </div>
+        </div>
+        <div id="tabs-2" class="tab_container" style="min-height:200px;">
+            <div id="user" name="User" >
+                this is user div
+            </div>
+        </div>
+    </div>
+    <div style="text-align:right;">
+        <div class="save_profile_container" id="back_interface_container">
+            <a class="button" href="#" onclick="procBackInterface(); return false;">Back</a>
+        </div>
+         <div class="save_profile_container" id="save_profile_container">
+            <a class="button" href="#" onclick="procSaveInterface(); return false;">Save</a>
+        </div>
+    </div>
+</div> -->
+{% endblock %}

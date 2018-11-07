@@ -1,0 +1,17 @@
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+auto  {LAN_IFC}
+iface {LAN_IFC} inet static
+        address {LAN_ADDRESS}
+        netmask {LAN_MASK}
+
+auto  {INTERNET_IFC}
+iface {INTERNET_IFC} inet static
+        address {INTERNET_ADDRESS}
+        netmask {INTERNET_MASK}
+        gateway {INTERNET_GATEWAY}
